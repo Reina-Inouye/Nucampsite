@@ -204,6 +204,9 @@
                         <span class="carousel-control-next-icon"></span>
                         <span class="sr-only"> Next</span>
                     </a>
+                    <button class="btn btn-danger btn-sm" id="carouselButton">
+                        <i class="fa fa-pause"></i>
+                    </button>
                 </div>
             </div>
         </div>
@@ -305,7 +308,25 @@
     <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 
-    <!-- Remove Javascript for tooltip to complete Week 3 task 1 -->
+    <!-- jQuery script to contruol carousel play buttons -->
+    <script>
+        $(function () {
+            $(".carousel").carousel( { interval: 2000 } );
+            $("#carouselButton").click(function(){
+                if ($("#carouselButton").children("i").hasClass("fa-pause")) {
+                    $(".carousel").carousel("pause");
+                    $("#carouselButton").children("i").removeClass("fa-pause");
+                    $("#carouselButton").children("i").addClass("fa-play");
+                } else {
+                    $(".carousel").carousel("cycle");
+                    $("#carouselButton").children("i").removeClass("fa-play");
+                    $("#carouselButton").children("i").addClass("fa-pause"); 
+                }
+            });  
+        });
+    </script>
+
+    <!-- jQuery script for tooltip created in week 3 and later removed in week 3 workshop -->
     <!-- <script>
         $(function () {
             $('[data-toggle="tooltip"]').tooltip()
